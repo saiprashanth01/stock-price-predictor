@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://mpld3.github.io/js/mpld3.v0.3.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Stock Price Predictor</h1>
+        <form id="predictForm" action="/predict" method="POST">
+            <select name="exchange" id="exchange">
+                <option value="BSE">BSE</option>
+                <option value="NSE">NSE</option>
+            </select>
+            <input type="text" name="ticker" id="ticker" placeholder="Enter Stock Ticker">
+            <button type="submit">Predict</button>
+        </form>
+        <div id="stockName"></div>
+        <div id="loading">Loading...</div>
+        <div class="result">
+            {% if current_price %}
+                <h2>Current Price: ₹{{ current_price }}</h2>
+                <h2>Predicted Price in 1 Day: ₹{{ predicted_price_1_day }}</h2>
+                <h2>Predicted Price in 100 Days: ₹{{ predicted_price_100_days }}</h2>
+                <h2>Predicted Price in 200 Days: ₹{{ predicted_price_200_days }}</h2>
+            {% endif %}
+        </div>
+        <div class="graph-container">
+            {% if graph_html_1_day %}
+                <div id="graph_1_day" class="graph">{{ graph_html_1_day|safe }}</div>
+            {% endif %}
+            {% if graph_html_100_days %}
+                <div id="graph_100_days" class="graph">{{ graph_html_100_days|safe }}</div>
+            {% endif %}
+            {% if graph_html_200_days %}
+                <div id="graph_200_days" class="graph">{{ graph_html_200_days|safe }}</div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
