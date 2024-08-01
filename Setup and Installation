@@ -1,0 +1,17 @@
+Setup and Installation
+Clone the repository:
+
+sh
+
+git clone https://github.com/yourusername/stock-price-predictor.git
+cd stock-price-predictor
+Install the required packages:
+
+sh
+
+pip install -r requirements.txt
+Run the application:
+
+sh
+
+python app.py
