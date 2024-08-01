@@ -1,0 +1,19 @@
+File Structure
+css
+
+stock-price-predictor/
+│
+├── static/
+│   ├── css/
+│   │   └── styles.css
+│   ├── js/
+│   │   └── script.js
+│   └── img/
+│       └── img.png
+│
+├── templates/
+│   └── index.html
+│
+├── app.py
+├── requirements.txt
+└── README.md
